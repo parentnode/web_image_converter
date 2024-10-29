@@ -8,6 +8,8 @@ include_once($_SERVER["FRAMEWORK_PATH"]."/config/init.php");
 
 include_once("classes/helpers/image.class.php");
 
+set_time_limit(0);
+
 $FS = new FileSystem();
 $ImageClass = new Image();
 
@@ -35,52 +37,64 @@ foreach($files as $file) {
 	$extension = strrchr($file, "."); 
 	$file_name = substr(basename($file), 0, strrpos(basename($file), $extension));
 
-	convert($file, $file_name, [
-		"width" => 600,
-		"height" => 400,
-		"allow_cropping" => true,
-		"compression" => 60,
-		"format" => "jpg"
-	]);
-	convert($file, $file_name."-small", [
-		"width" => 300,
-		"height" => 200,
-		"allow_cropping" => true,
-		"compression" => 60,
-		"format" => "jpg"
-	]);
-
 
 	convert($file, $file_name, [
-		"width" => 600,
-		"height" => 400,
+		"width" => 100,
+		"height" => 100,
 		"allow_cropping" => true,
 		"compression" => 60,
-		"format" => "avif"
-	]);
-	convert($file, $file_name."-small", [
-		"width" => 300,
-		"height" => 200,
-		"allow_cropping" => true,
-		"compression" => 60,
-		"format" => "avif"
+		"format" => "png"
 	]);
 
 
-	convert($file, $file_name, [
-		"width" => 600,
-		"height" => 400,
-		"allow_cropping" => true,
-		"compression" => 75,
-		"format" => "webp"
-	]);
-	convert($file, $file_name."-small", [
-		"width" => 300,
-		"height" => 200,
-		"allow_cropping" => true,
-		"compression" => 75,
-		"format" => "webp"
-	]);
+
+	// EUD TEST
+	// convert($file, $file_name, [
+	// 	"width" => 600,
+	// 	"height" => 400,
+	// 	"allow_cropping" => true,
+	// 	"compression" => 60,
+	// 	"format" => "jpg"
+	// ]);
+	// convert($file, $file_name."-small", [
+	// 	"width" => 300,
+	// 	"height" => 200,
+	// 	"allow_cropping" => true,
+	// 	"compression" => 60,
+	// 	"format" => "jpg"
+	// ]);
+	//
+	//
+	// convert($file, $file_name, [
+	// 	"width" => 600,
+	// 	"height" => 400,
+	// 	"allow_cropping" => true,
+	// 	"compression" => 60,
+	// 	"format" => "avif"
+	// ]);
+	// convert($file, $file_name."-small", [
+	// 	"width" => 300,
+	// 	"height" => 200,
+	// 	"allow_cropping" => true,
+	// 	"compression" => 60,
+	// 	"format" => "avif"
+	// ]);
+	//
+	//
+	// convert($file, $file_name, [
+	// 	"width" => 600,
+	// 	"height" => 400,
+	// 	"allow_cropping" => true,
+	// 	"compression" => 75,
+	// 	"format" => "webp"
+	// ]);
+	// convert($file, $file_name."-small", [
+	// 	"width" => 300,
+	// 	"height" => 200,
+	// 	"allow_cropping" => true,
+	// 	"compression" => 75,
+	// 	"format" => "webp"
+	// ]);
 
 }
 
